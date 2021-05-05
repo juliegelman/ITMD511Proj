@@ -1,163 +1,147 @@
 <!DOCTYPE html>
 
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+      .container {
+        height: 300px;
+        width: 100%;
+      }
 
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      #display {
+        width: 100%;
+        font-size: 72px;
+        text-align: center;
+        margin: 0px auto;
+      }
 
-  <title>Timer</title>
-  <style>
-    .container {
-      height: 300px;
-      width: 100%;
-    }
+      .buttons {
+        text-align: center;
+      }
+    </style>
+    ​
+  </head>
 
-    #display {
-      width: 100%;
-      font-size: 72px;
-      text-align: center;
-      margin: 0px auto;
-    }
-
-    .buttons {
-      text-align: center;
-    }
-  </style>
-  ​
-
-</head>
-
-<body>
+  <body>
     <h2>Timer</h2>
 
-  ​
+    ​
 
-  <div class="container">
+    <div class="container">
+      <div id="display">00:00:00</div>
 
-    
-    <div id="display">
+      <div class="buttons">
+        <button id="startStop" onclick="startStop()">Start</button>
 
-      00:00:00
-
-    </div>
-
-    <div class="buttons">
-
-      <button id="startStop" onclick="startStop()">Start</button>
-
-      <button id="reset" onclick="reset()">Reset</button>
-
-    </div>
-    <div id="Timer">
-
+        <button id="reset" onclick="reset()">Reset</button>
       </div>
-      </div>
-      <script>
-        //Define vars to hold time values
-        let seconds = 0;
-        let minutes = 0;
-        let hours = 0;
-    
-        //Define vars to hold "display" value
-        let displaySeconds = 0;
-        let displayMinutes = 0;
-        let displayHours = 0;
-        let displayTimer = displayHours + displayMinutes + displaySeconds;
-        //Define var to hold setInterval() function
-        let interval = null;
-    
-        //Define var to hold stopwatch status
-        let status = "stopped";
-    
-        //Stopwatch function (logic to determine when to increment next value, etc.)
-        function stopWatch() {
-    
-          seconds++;
-    
-          //Logic to determine when to increment next value
-          if (seconds / 60 === 1) {
-            seconds = 0;
-            minutes++;
-    
-            if (minutes / 60 === 1) {
-              minutes = 0;
-              hours++;
-            }
-    
-          }
-    
-          //If seconds/minutes/hours are only one digit, add a leading 0 to the value
-          if (seconds < 10) {
-            displaySeconds = "0" + seconds.toString();
-          }
+      <div id="Timer"></div>
+    </div>
+    <script>
+              //Define vars to hold time values
+              let seconds = 0;
+              let minutes = 0;
+              let hours = 0;
+
+              //Define vars to hold "display" value
+              let displaySeconds = 0;
+              let displayMinutes = 0;
+              let displayHours = 0;
+              let displayTimer = displayHours + displayMinutes + displaySeconds;
+              //Define var to hold setInterval() function
+              let interval = null;
+
+              //Define var to hold stopwatch status
+              let status = "stopped";
+
+              //Stopwatch function (logic to determine when to increment next value, etc.)
+              function stopWatch() {
+
+                seconds++;
+
+                //Logic to determine when to increment next value
+                if (seconds / 60 === 1) {
+                  seconds = 0;
+                  minutes++;
+
+                  if (minutes / 60 === 1) {
+                    minutes = 0;
+                    hours++;
+                  }
+
+                }
+
+                //If seconds/minutes/hours are only one digit, add a leading 0 to the value
+                if (seconds < 10) {
+                  displaySeconds = "0" + seconds.toString();
+                }
+                else {
+                  displaySeconds = seconds;
+                }
+
+                if (minutes < 10) {
+                  displayMinutes = "0" + minutes.toString();
+                }
+                else {
+                  displayMinutes = minutes;
+                }
+
+                if (hours < 10) {
+                  displayHours = "0" + hours.toString();
+                }
+                else {
+                  displayHours = hours;
+                }
+
+                //Display updated time values to user
+                document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+
+              }
+
+
+
+              function startStop() {
+
+              if (status === "stopped") {
+
+               //Start the stopwatch (by calling the setInterval() function)
+              interval = window.setInterval(stopWatch, 1000);
+              document.getElementById("startStop").innerHTML = "Stop";
+              status = "started";
+
+              }
           else {
-            displaySeconds = seconds;
-          }
-    
-          if (minutes < 10) {
-            displayMinutes = "0" + minutes.toString();
-          }
-          else {
-            displayMinutes = minutes;
-          }
-    
-          if (hours < 10) {
-            displayHours = "0" + hours.toString();
-          }
-          else {
-            displayHours = hours;
-          }
-    
-          //Display updated time values to user
-          document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
-    
+
+            window.clearInterval(interval);
+           document.getElementById("startStop").innerHTML = "Start";
+              status = "stopped";
+           //return displayHours + " " + displayMinutes + " " + displaySeconds;
+              return displayTimer;
+
+      }
+
+      }
+              //Function to reset the stopwatch
+              function reset() {
+
+          window.clearInterval(interval);
+          seconds = 0;
+          minutes = 0;
+          hours = 0;
+          document.getElementById("display").innerHTML = "00:00:00";
+          document.getElementById("startStop").innerHTML = "Start";
+          document.getElementById("timer").innerHTML = displayTimer + " secs"; // watch for spelling
+
         }
-    
-    
-    
-        function startStop() {
+    </script>
 
-        if (status === "stopped") {
-
-         //Start the stopwatch (by calling the setInterval() function)
-        interval = window.setInterval(stopWatch, 1000);
-        document.getElementById("startStop").innerHTML = "Stop";
-        status = "started";
-
-        }
-    else {
-
-      window.clearInterval(interval);
-     document.getElementById("startStop").innerHTML = "Start";
-        status = "stopped";
-     //return displayHours + " " + displayMinutes + " " + displaySeconds;
-        return displayTimer;
-
-
-}
-
-}
-    
-        //Function to reset the stopwatch
-        function reset() {
-    
-    window.clearInterval(interval);
-    seconds = 0;
-    minutes = 0;
-    hours = 0;
-    document.getElementById("display").innerHTML = "00:00:00";
-    document.getElementById("startStop").innerHTML = "Start";
-    document.getElementById("timer").innerHTML = displayTimer + " secs"; // watch for spelling
-
-  }
-      </script>
-    
-      ​
-</body>
-
+    ​
+  </body>
 </html>
