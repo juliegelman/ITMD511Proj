@@ -18,9 +18,9 @@ describe("Test for elements on timer page", () => {
   });
 
   it("Page renders a heading element", () => {
-    expect(container.querySelector("buttons")).not.toBeNull();
+    expect(container.querySelector("h2")).not.toBeNull();
     expect(
-      getByText(container, "Start")
+      getByText(container, "Timer")
     ).toBeInTheDocument();
   });
 });
