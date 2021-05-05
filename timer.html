@@ -150,9 +150,11 @@
 
         }
         function showTimeUsed(){
-    //return displayTimer;
-    document.write(displayHours + ":" + displayMinutes + ":" + displaySeconds);
-   // document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+            //return displayTimer;
+           
+            // document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+            var date = new Date();
+            document.write(displayHours + ":" + displayMinutes + ":" + displaySeconds + " " + date);
 
 }
     </script>
