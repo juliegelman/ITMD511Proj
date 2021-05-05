@@ -20,7 +20,7 @@ describe("Test for elements on Home page", () => {
   it("Page renders a heading element", () => {
     expect(container.querySelector("h2")).not.toBeNull();
     expect(
-      getByText(container, "Welcome to my Progressive Web Application.")
+      getByText(container, "Welcome to my timer Web Application.")
     ).toBeInTheDocument();
   });
 });
