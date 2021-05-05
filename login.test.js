@@ -6,12 +6,12 @@ const { JSDOM } = require("jsdom");
 const fs = require("fs");
 const path = require("path");
 
-const html = fs.readFileSync(path.resolve(__dirname, "./index.html"), "utf8");
+const html = fs.readFileSync(path.resolve(__dirname, "./login.html"), "utf8");
 
 let dom;
 let container;
 
-describe("Test for elements on Home page", () => {
+describe("Test for elements on Login page", () => {
   beforeEach(() => {
     dom = new JSDOM(html, { runScripts: "dangerously" });
     container = dom.window.document.body;
