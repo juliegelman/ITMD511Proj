@@ -6,3 +6,5 @@
 * Display the amount of water used for each day
 
 * Site is mobile-friendly
+
+* Response time of each function is <1 min
