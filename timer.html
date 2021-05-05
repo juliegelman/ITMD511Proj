@@ -40,7 +40,14 @@
       <div class="buttons">
         <button id="startStop" onclick="startStop()">Start</button>
 
-        <button id="reset" onclick="reset()">Reset</button>
+        <button id="reset" onclick="reset()" onclick="">Reset</button>
+
+        <button type="button" onclick="document.getElementById('date_time_button').innerHTML = Date()">
+
+            Click and see Date and Time.</button>
+
+        <p id="date_time_button"></p>
+        
       </div>
       <div id="Timer"></div>
     </div>
