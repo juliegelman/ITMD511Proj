@@ -44,13 +44,21 @@
 
        
       </div>
+      <div class="timeUsedDisplay">
+            <button id="show" onclick="showTimeUsed()">Show</button>
+            <script> 
+                document.write(displayTimer).innerHTML = 5 + 6;
+                </script>
       <div id="Timer">
    </div>
    </div>
-   <p id="Result">
-    displaySeconds;
-   </p>
-    <script>
+  
+    
+        
+   
+
+
+                <script>
               
               let seconds = 0;
               let minutes = 0;
@@ -141,6 +149,12 @@
           document.getElementById("Result").innerHTML = displaySeconds;
 
         }
+        function showTimeUsed(){
+    //return displayTimer;
+    document.write(displaySeconds);
+   // document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+
+}
     </script>
     
 
