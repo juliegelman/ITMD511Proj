@@ -42,7 +42,7 @@
 
         <button id="reset" onclick="reset()" onclick="">Reset</button>
 
-        <button type="button" onclick="document.getElementById('date_time_button').innerHTML = getDate()">
+        <button type="button" onclick="document.getElementById('date_time_button').innerHTML = date()">
 
             Click and see Date and Time.</button>
 
@@ -56,6 +56,13 @@
             displayMinutes;
         }
         </script>
+        <script>
+
+            var today = new Date();
+            
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            
+            </script>
       </div>
       <div id="Timer">
    </div>
