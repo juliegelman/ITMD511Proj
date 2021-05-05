@@ -61,7 +61,42 @@
   
       </div>
       </div>
-  
+      <script>
+        //Define vars to hold time values
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+    
+        //Define vars to hold "display" value
+        let displaySeconds = 0;
+        let displayMinutes = 0;
+        let displayHours = 0;
+        let displayTimer = displayHours + displayMinutes + displaySeconds;
+        //Define var to hold setInterval() function
+        let interval = null;
+    
+        //Define var to hold stopwatch status
+        let status = "stopped";
+    
+        //Stopwatch function (logic to determine when to increment next value, etc.)
+        function stopWatch() {
+    
+          seconds++;
+    
+          //Logic to determine when to increment next value
+          if (seconds / 60 === 1) {
+            seconds = 0;
+            minutes++;
+    
+            if (minutes / 60 === 1) {
+              minutes = 0;
+              hours++;
+            }
+    
+          }
+    
+      </script>
+    
       ​
 </body>
 
