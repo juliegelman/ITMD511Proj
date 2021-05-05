@@ -53,37 +53,37 @@
    </div>
    </div>
   
-    
-        
-   
-
-
                 <script>
-              
+              //variables to count in stopwatch
               let seconds = 0;
               let minutes = 0;
               let hours = 0;
 
-              
+              //variables to display results
+
               let displaySeconds = 0;
               let displayMinutes = 0;
               let displayHours = 0;
               let displayTimer = displayHours + displayMinutes + displaySeconds;
+
               //Define var to hold setInterval() function
               let interval = null;
 
-              
+              //when page is opened, timer is automatically stopped at 0
               let status = "stopped";
 
              
               function stopWatch() {
 
+                //auto increment seconds
                 seconds++;
 
+                //when seconds = 60, increment minutes
                 if (seconds / 60 === 1) {
                   seconds = 0;
                   minutes++;
 
+                  //when minutes = 60, increment hours
                   if (minutes / 60 === 1) {
                     minutes = 0;
                     hours++;
@@ -91,6 +91,7 @@
 
                 }
 
+                //if seconds, mins, hours < 10, add leading 0
                 if (seconds < 10) {
                   displaySeconds = "0" + seconds.toString();
                 }
@@ -118,6 +119,7 @@
 
 
 
+              //start timer on click, only if timer is stopped
               function startStop() {
 
               if (status === "stopped") {
@@ -137,6 +139,8 @@
       }
 
       }
+      
+            //function to reset timer on click, set status back to "Stopped"
               function reset() {
 
           window.clearInterval(interval);
@@ -149,7 +153,9 @@
           document.getElementById("Result").innerHTML = displaySeconds;
 
         }
+        //function to show time used - unfortunately, was only able to display in a fresh page
         function showTimeUsed(){
+            
             //return displayTimer;
            
             // document.getElementById("display").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
